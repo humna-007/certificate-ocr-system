@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+uploads/*
+!uploads/.gitkeep
+.env
+.vscode/
+*.pem
+mkcert.exe
+node_modules/
