@@ -8,3 +8,5 @@ numpy
 pdf2image
 groq
 python-dotenv
+pytest
+httpx
