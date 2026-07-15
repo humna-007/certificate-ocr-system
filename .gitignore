@@ -8,3 +8,4 @@ uploads/*
 *.pem
 mkcert.exe
 node_modules/
+.pytest_cache/
