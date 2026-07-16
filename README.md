@@ -32,7 +32,7 @@ The system uses a **hybrid extraction pipeline**: fast, deterministic regex patt
 ![Camera capture](screenshots/camera-capture.jpeg)
 
 **Extraction results**
-![Extraction results](screenshots/results-output.jpeg)
+![Extraction results](screenshots/result-output.jpeg)
 
 ## Tech stack
 
