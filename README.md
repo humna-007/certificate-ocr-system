@@ -23,6 +23,7 @@ The system uses a **hybrid extraction pipeline**: fast, deterministic regex patt
 ## Screenshots
 
 **Landing page**
+<<<<<<< HEAD
 ![Landing page hero](screenshots/landing-hero.jpeg)
 
 **Upload interface**
@@ -33,6 +34,18 @@ The system uses a **hybrid extraction pipeline**: fast, deterministic regex patt
 
 **Extraction results**
 ![Extraction results](screenshots/result-output.jpeg)
+=======
+![Landing page hero](screenshots/landing-hero.png)
+
+**Upload interface**
+![Upload interface](screenshots/upload-interface.png)
+
+**Camera capture**
+![Camera capture](screenshots/camera-capture.png)
+
+**Extraction results**
+![Extraction results](screenshots/results-output.png)
+>>>>>>> 749471d9a8652222042632a841dc8c7204b991a8
 
 ## Tech stack
 
