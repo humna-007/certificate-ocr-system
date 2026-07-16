@@ -10,6 +10,11 @@ Certificate OCR System automates a process that traditionally takes 5–10 minut
 
 The system uses a **hybrid extraction pipeline**: fast, deterministic regex pattern-matching runs first, and a Groq-hosted LLM (`llama-3.1-8b-instant`) fills in fields the regex pass couldn't confidently extract — particularly useful for stylized logos, noisy OCR output, and non-standard certificate layouts.
 
+## Demo Video
+
+[Watch the demo](https://youtu.be/m3gue4YYAZI)
+
+
 ## Features
 
 - Drag-and-drop or click-to-browse file upload (JPG, PNG, TIFF, PDF)
@@ -81,7 +86,9 @@ pip install -r requirements.txt
 ```
 
 Create a `.env` file in the project root:
+```
 GROQ_API_KEY=your_groq_api_key_here
+```
 
 Run the server:
 ```bash
