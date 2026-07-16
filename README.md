@@ -42,6 +42,7 @@ The system uses a **hybrid extraction pipeline**: fast, deterministic regex patt
 
 ## Project structure
 
+```
 teerop_1/
 ├── app/
 │   ├── core/
@@ -58,6 +59,7 @@ teerop_1/
 ├── uploads/                    # Temporary storage (cleared after processing)
 ├── main.py                     # FastAPI application entry point
 └── requirements.txt
+```
 
 ## Installation
 
