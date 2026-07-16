@@ -13,7 +13,8 @@ Why wrap it instead of calling pytesseract directly in routes.py:
 """
 
 import pytesseract
-from pdf2image import convert_from_path
+import fitz  # PyMuPDF
+from PIL import Image
 from pathlib import Path
 from typing import List
 import numpy as np
@@ -39,17 +40,24 @@ def pdf_to_images(pdf_path: Path) -> List[Image.Image]:
     """
     Converts each page of a PDF into a PIL Image, so the OCR pipeline
     can treat PDFs and photos identically downstream.
-    Raises a clear error if Poppler isn't installed/found, since that's
-    the most common failure point on Windows (per the troubleshooting
-    table in the task doc).
+
+    Uses PyMuPDF (fitz) instead of pdf2image/Poppler — PyMuPDF is a
+    self-contained Python library with no external system dependency,
+    which avoids Poppler installation/PATH issues entirely and makes
+    the project easier to set up on any machine.
     """
     try:
-        return convert_from_path(str(pdf_path))
+        images = []
+        pdf_document = fitz.open(str(pdf_path))
+        for page in pdf_document:
+            # Render at 2x zoom for better OCR accuracy on smaller text
+            pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))
+            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+            images.append(img)
+        pdf_document.close()
+        return images
     except Exception as e:
-        raise RuntimeError(
-            f"PDF conversion failed. Ensure Poppler is installed and "
-            f"added to system PATH. Original error: {e}"
-        )
+        raise RuntimeError(f"PDF conversion failed. Original error: {e}")
 
 
 def extract_text_from_image(preprocessed_image: np.ndarray) -> str:

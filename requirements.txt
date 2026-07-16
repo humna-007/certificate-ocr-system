@@ -5,7 +5,7 @@ pytesseract
 opencv-python
 pillow
 numpy
-pdf2image
+pymupdf
 groq
 python-dotenv
 pytest

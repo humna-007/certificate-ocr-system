@@ -36,7 +36,7 @@ The system uses a **hybrid extraction pipeline**: fast, deterministic regex patt
 
 ## Tech stack
 
-**Backend:** Python, FastAPI, Tesseract OCR (via pytesseract), OpenCV, pdf2image, Groq API
+**Backend:** Python, FastAPI, Tesseract OCR (via pytesseract), OpenCV, PyMuPDF, Groq API
 
 **Frontend:** React (Vite), Axios, SheetJS (xlsx)
 
@@ -68,7 +68,6 @@ teerop_1/
 - Python 3.11+
 - Node.js 18+
 - [Tesseract OCR](https://github.com/UB-Mannheim/tesseract/wiki) installed and on PATH
-- [Poppler](https://github.com/oschwartz10612/poppler-windows) installed and on PATH (required for PDF support)
 - A [Groq API key](https://console.groq.com) (optional — enables the AI extraction fallback; the app runs without one using regex extraction only)
 
 ### Backend setup
@@ -137,6 +136,7 @@ This system is purpose-built for **certificates** — the field extraction logic
 - **Handwritten fields** (e.g. handwritten dates or signatures) are extracted with reduced accuracy, since Tesseract is optimized for printed text, not handwriting recognition.
 - **Heavily stylized or low-contrast certificates** (colorful gradient backgrounds, decorative fonts, colored text on colored backgrounds) reduce OCR accuracy, as text-background contrast is a fundamental constraint of OCR engines.
 - **Organization name extraction** uses a confidence cascade (explicit labels → legal/institutional suffixes → capitalization heuristics → positional fallback) rather than a single reliable rule, since organization names appear in highly inconsistent positions and formats across certificate designs.
+- PDF-to-image conversion uses PyMuPDF rather than Poppler/pdf2image, avoiding an external system dependency and simplifying installation across machines.
 - The system corrects 90°/180°/270° image rotation automatically, but does not correct arbitrary skew beyond the built-in deskewing step.
 
 ## Security notes
